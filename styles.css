@@ -218,3 +218,58 @@ button { color: inherit; font: inherit; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+
+/* TAMANNA / TRILYVA PRISM GARDEN */
+.hero-subtitle strong { color: var(--ink); font-weight: 700; }
+.prism-garden { overflow: hidden; min-width: 0; }
+.prism-garden .art-halo { width: min(94%, 520px); background: radial-gradient(circle at 48% 48%, rgba(255,255,255,.82), transparent 35%), linear-gradient(145deg, rgba(220,211,245,.72), rgba(249,215,205,.68) 52%, rgba(246,232,177,.7)); }
+.prism-orbit { position: absolute; z-index: 0; border: 1px solid rgba(158,139,217,.25); border-radius: 50%; pointer-events: none; }
+.prism-orbit-one { width: min(102%, 550px); aspect-ratio: 1; transform: rotate(-24deg) scaleY(.63); animation: prismOrbit 38s linear infinite; }
+.prism-orbit-two { width: min(82%, 440px); aspect-ratio: 1; transform: rotate(38deg) scaleY(.72); border-color: rgba(226,151,144,.28); animation: prismOrbit 52s linear infinite reverse; }
+.prism-flower { position: absolute; z-index: 1; display: block; object-fit: contain; pointer-events: none; user-select: none; transform-origin: 50% 50%; }
+.prism-flower-main { width: min(88%, 475px); max-height: 92%; filter: drop-shadow(0 24px 30px rgba(87,63,100,.16)); animation: prismFloat 8.5s ease-in-out infinite, prismTurn 76s linear infinite; }
+.prism-flower-echo { width: min(49%, 265px); opacity: .37; filter: hue-rotate(52deg) saturate(1.16) drop-shadow(0 14px 24px rgba(87,63,100,.1)); }
+.prism-flower-echo-one { left: -1%; top: 19%; animation: prismEchoLeft 13s ease-in-out infinite; }
+.prism-flower-echo-two { right: -2%; bottom: 11%; filter: hue-rotate(148deg) saturate(1.2) drop-shadow(0 14px 24px rgba(87,63,100,.1)); animation: prismEchoRight 15s ease-in-out infinite; }
+.prism-petal { position: absolute; z-index: 2; width: 24px; height: 40px; border: 1px solid rgba(255,255,255,.9); border-radius: 85% 15% 80% 20%; background: linear-gradient(145deg, rgba(255,255,255,.83), rgba(212,193,247,.74) 54%, rgba(245,174,167,.72)); box-shadow: 0 6px 18px rgba(130,101,166,.12); pointer-events: none; }
+.prism-petal-one { left: 12%; top: 34%; transform: rotate(-31deg); animation: petalDriftOne 9s ease-in-out infinite; }
+.prism-petal-two { right: 13%; top: 29%; width: 17px; height: 29px; background: linear-gradient(145deg, rgba(255,255,255,.85), rgba(255,225,159,.8)); transform: rotate(31deg); animation: petalDriftTwo 11s ease-in-out infinite; }
+.prism-petal-three { right: 22%; bottom: 21%; width: 13px; height: 23px; background: linear-gradient(145deg, rgba(255,255,255,.8), rgba(245,172,170,.72)); transform: rotate(74deg); animation: petalDriftThree 12s ease-in-out infinite; }
+.prism-glint { position: absolute; z-index: 3; color: #b49fe7; text-shadow: 0 0 18px rgba(255,255,255,.7); pointer-events: none; }
+.prism-glint-one { top: 19%; right: 19%; font-size: 25px; animation: glintPulse 3.8s ease-in-out infinite; }
+.prism-glint-two { bottom: 28%; left: 15%; color: #df9990; font-size: 31px; animation: glintPulse 4.8s ease-in-out -1.8s infinite; }
+.art-caption { bottom: 8%; align-items: center; gap: 12px; }
+.art-caption a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+.art-caption a:hover { color: var(--ink); border-color: var(--ink); }
+.prism-controls { position: absolute; z-index: 4; left: 9%; right: 9%; bottom: 1.5%; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.prism-credit { color: var(--faint); font: 8px/1.5 var(--mono); letter-spacing: .025em; }
+.prism-pause { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(251,248,243,.7); color: var(--muted); font: 9px var(--mono); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.prism-pause:hover { background: var(--paper); color: var(--ink); border-color: var(--ink); }
+.prism-garden.prism-paused *, .prism-garden.prism-paused *::before, .prism-garden.prism-paused *::after { animation-play-state: paused !important; }
+.prism-garden.prism-paused .prism-pause { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@keyframes prismFloat { 0%,100% { transform: translate3d(0,5px,0) rotate(-2deg) scale(.985); } 50% { transform: translate3d(0,-13px,0) rotate(2deg) scale(1.015); } }
+@keyframes prismTurn { from { rotate: -4deg; } to { rotate: 356deg; } }
+@keyframes prismOrbit { to { rotate: 360deg; } }
+@keyframes prismEchoLeft { 0%,100% { transform: translate(0,0) rotate(-15deg) scale(.9); } 50% { transform: translate(12px,-14px) rotate(4deg) scale(1); } }
+@keyframes prismEchoRight { 0%,100% { transform: translate(0,0) rotate(18deg) scale(.82); } 50% { transform: translate(-10px,12px) rotate(-4deg) scale(.94); } }
+@keyframes petalDriftOne { 0%,100% { translate: 0 0; rotate: -8deg; } 50% { translate: -8px -24px; rotate: 15deg; } }
+@keyframes petalDriftTwo { 0%,100% { translate: 0 0; rotate: 0deg; } 50% { translate: 11px -23px; rotate: 27deg; } }
+@keyframes petalDriftThree { 0%,100% { translate: 0 0; rotate: 74deg; } 50% { translate: -10px -19px; rotate: 110deg; } }
+@keyframes glintPulse { 0%,100% { opacity: .55; transform: scale(.8) rotate(-12deg); } 50% { opacity: 1; transform: scale(1.2) rotate(12deg); } }
+.github-copy .online-handle-label { margin-top: 8px; }
+@media (max-width: 650px) {
+  .prism-garden { min-height: 350px; }
+  .prism-flower-main { width: min(92%, 390px); }
+  .prism-flower-echo { width: min(47%, 185px); }
+  .prism-petal-one { left: 8%; top: 36%; }
+  .prism-petal-two { right: 8%; top: 28%; }
+  .art-caption { left: 8%; right: 8%; bottom: 10%; font-size: 7px; }
+  .prism-controls { left: 8%; right: 8%; bottom: 1%; }
+  .prism-credit { max-width: 68%; font-size: 7px; }
+  .prism-pause { font-size: 8px; padding: 6px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prism-garden *, .prism-garden *::before, .prism-garden *::after { animation: none !important; transition: none !important; }
+  .prism-flower-main { transform: none; }
+}

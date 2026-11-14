@@ -5,11 +5,26 @@
   var menuButton = document.getElementById("menuToggle");
   var nav = document.getElementById("mainNav");
   var year = document.getElementById("year");
+  var prismGarden = document.getElementById("prismGarden");
+  var prismPause = document.getElementById("prismPause");
+
+  if (prismGarden && prismPause) {
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      prismPause.hidden = true;
+    } else {
+      prismPause.addEventListener("click", function () {
+        var paused = prismGarden.classList.toggle("prism-paused");
+        prismPause.textContent = paused ? "Resume motion" : "Pause motion";
+        prismPause.setAttribute("aria-pressed", String(paused));
+      });
+    }
+  }
 
   if (year) year.textContent = String(new Date().getFullYear());
 
   var savedTheme = null;
-  try { savedTheme = window.localStorage.getItem("tasnim-theme"); } catch (error) { /* Storage may be unavailable. */ }
+  try { savedTheme = window.localStorage.getItem("tamanna-theme"); } catch (error) { /* Storage may be unavailable. */ }
   if (savedTheme === "dark" || savedTheme === "light") root.setAttribute("data-theme", savedTheme);
 
   function syncThemeLabel() {
@@ -23,7 +38,7 @@
     toggle.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
-      try { window.localStorage.setItem("tasnim-theme", next); } catch (error) { /* Theme still works for this visit. */ }
+      try { window.localStorage.setItem("tamanna-theme", next); } catch (error) { /* Theme still works for this visit. */ }
       syncThemeLabel();
     });
   }

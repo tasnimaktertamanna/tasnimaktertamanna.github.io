@@ -1,21 +1,11 @@
-# Tasnim Akter Tamanna — personal website
+# Tamanna — personal website
 
-This folder contains a standalone personal website for Tasnim Akter Tamanna.
+This is the updated homepage for Tamanna (@red_heart_07), including the animated Prism Aster flower.
 
-It is deliberately kept separate from the repository's existing root website. Nothing in the root repository needs to be replaced.
+## Upload
 
-## Preview
+Upload every file in this folder to the **root** of `tasnimaktertamanna/tasnimaktertamanna.github.io`, replacing the existing files with the same names when GitHub asks. Keep these files together: `index.html`, `styles.css`, `main.js`, `prism-aster.svg`, `favicon.svg`, `og-image.png`, `robots.txt`, and `sitemap.xml`.
 
-Open `index.html` in this folder. The page loads its styling and JavaScript from `assets/`, uses `favicon.svg`, and references `og-image.png` for social sharing metadata.
+## Prism artwork
 
-## Publish as a subfolder
-
-Upload the entire `in me` folder to the root of the repository. The resulting path should be:
-
-`in me/index.html`
-
-The site can then be viewed at:
-
-`https://tamasrazim.github.io/in%20me/`
-
-GitHub Pages may not serve folders containing spaces consistently across all tools. If needed, rename the folder to `in-me` and use `https://tamasrazim.github.io/in-me/` instead.
+`prism-aster.svg` is a vector conversion of the Prism Aster EPS artwork supplied in the conversation. It is credited in the website hero to Robiul Rumman Razim / TRILYVA Prism Flowers and used with the permission Tamanna reported receiving. The website animates the vector locally with CSS; visitors do not need to load the TRILYVA editor.
