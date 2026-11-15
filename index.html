@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#fbf8f3">
   <meta name="color-scheme" content="light dark">
   <meta name="author" content="Tasnim Akter Tamanna">
-  <meta name="description" content="A little corner of the internet belonging to Tamanna — a personal space for stories, ideas, and a garden of animated prism flowers.">
+  <meta name="description" content="A little corner of the internet belonging to Tamanna — personal stories, a soft botanical garden, and original animated Prism flower studies.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://tasnimaktertamanna.github.io/">
   <title>Tamanna — A little garden of light</title>
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Tamanna">
   <meta property="og:title" content="Tamanna — A little garden of light">
-  <meta property="og:description" content="A personal space for stories, ideas, and a little garden of animated prism flowers.">
+  <meta property="og:description" content="A personal space for stories, a soft botanical garden, and original animated Prism flower studies.">
   <meta property="og:url" content="https://tasnimaktertamanna.github.io/">
   <meta property="og:image" content="https://tasnimaktertamanna.github.io/og-image.png">
   <meta property="og:image:secure_url" content="https://tasnimaktertamanna.github.io/og-image.png">
@@ -24,7 +24,7 @@
   <meta property="og:image:alt" content="Tamanna — a little garden of light">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tamanna — A little garden of light">
-  <meta name="twitter:description" content="A personal space for stories, ideas, and a little garden of animated prism flowers.">
+  <meta name="twitter:description" content="A personal space for stories, a soft botanical garden, and original animated Prism flower studies.">
   <meta name="twitter:image" content="https://tasnimaktertamanna.github.io/og-image.png">
   <meta name="twitter:image:alt" content="Tamanna — a little garden of light">
 
@@ -32,8 +32,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=2.0.0">
-  <script defer src="/main.js?v=2.0.0"></script>
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("tamanna-theme");
+        if (savedTheme === "dark" || savedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+        }
+      } catch (error) { /* The page uses its light default when storage is unavailable. */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="/styles.css?v=5.0.0">
+  <script defer src="/main.js?v=5.0.0"></script>
+  <script defer src="/prism-library.js?v=1.1.0"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,6 +58,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-wash" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
   <header class="site-header">
     <div class="header-inner wrap">
@@ -56,6 +68,7 @@
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Main navigation">
         <a href="#story">My story</a>
+        <a href="#prism-collection">Prism blooms</a>
         <a href="#little-world">Little world</a>
         <a href="#find-me">Find me</a>
       </nav>
@@ -64,15 +77,15 @@
           <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.3A8.8 8.8 0 0 1 8.7 3.8 8.9 8.9 0 1 0 20.2 15.3Z"/></svg>
         </button>
-        <a class="hello-link" href="#find-me">Say hello <span aria-hidden="true">↗</span></a>
+        <a class="header-github" href="https://github.com/tasnimaktertamanna" target="_blank" rel="noopener noreferrer">My GitHub <span aria-hidden="true">↗</span></a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
       </div>
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero wrap" id="home" aria-labelledby="hero-title">
-      <div class="hero-copy">
+      <div class="hero-copy reveal reveal-left">
         <p class="eyebrow"><span class="eyebrow-star">✳</span> A LITTLE SPACE, JUST MINE</p>
         <h1 id="hero-title">Hello, I'm<br><em>Tamanna</em><span class="hero-period">.</span></h1>
         <p class="hero-subtitle">ONLINE AS <strong>@red_heart_07</strong></p>
@@ -84,34 +97,41 @@
         <div class="hero-footnote"><span class="tiny-spark">✳</span> A work in progress, in the loveliest way.</div>
       </div>
 
-      <div class="hero-art prism-garden" id="prismGarden" aria-label="Animated translucent Prism Aster flower from the TRILYVA Prism Flowers collection">
-        <div class="art-halo"></div>
+      <div class="hero-art prism-garden reveal reveal-zoom" id="prismGarden" role="group" aria-label="Three original animated Prism flowers: Cosmos, Carnation and Snapdragon">
+        <div class="art-halo" aria-hidden="true"></div>
         <div class="prism-orbit prism-orbit-one" aria-hidden="true"></div>
         <div class="prism-orbit prism-orbit-two" aria-hidden="true"></div>
-        <img class="prism-flower prism-flower-echo prism-flower-echo-one" src="/prism-aster.svg" alt="" aria-hidden="true">
-        <img class="prism-flower prism-flower-echo prism-flower-echo-two" src="/prism-aster.svg" alt="" aria-hidden="true">
-        <img class="prism-flower prism-flower-main" src="/prism-aster.svg" alt="A translucent golden and rose-pink Prism Aster flower" loading="eager" decoding="async" fetchpriority="high">
+        <div class="prism-hero-stage" aria-hidden="true">
+          <div class="prism-hero-glow"></div>
+          <iframe class="prism-hero-frame prism-hero-frame--side prism-hero-frame--left" data-prism-hero-id="prism-carnation" title="Original Prism Carnation animation" loading="eager" referrerpolicy="no-referrer" sandbox="allow-scripts"></iframe>
+          <iframe class="prism-hero-frame prism-hero-frame--main" data-prism-hero-id="prism-cosmos" title="Original Prism Cosmos animation" loading="eager" referrerpolicy="no-referrer" sandbox="allow-scripts"></iframe>
+          <iframe class="prism-hero-frame prism-hero-frame--side prism-hero-frame--right" data-prism-hero-id="prism-snapdragon" title="Original Prism Snapdragon animation" loading="eager" referrerpolicy="no-referrer" sandbox="allow-scripts"></iframe>
+          <span class="prism-hero-label prism-hero-label--left">CARNATION</span>
+          <span class="prism-hero-label prism-hero-label--main">COSMOS</span>
+          <span class="prism-hero-label prism-hero-label--right">SNAPDRAGON</span>
+          <span class="prism-hero-loading">ORIGINAL PRISM MOTION / OPENING…</span>
+        </div>
         <span class="prism-petal prism-petal-one" aria-hidden="true"></span>
         <span class="prism-petal prism-petal-two" aria-hidden="true"></span>
         <span class="prism-petal prism-petal-three" aria-hidden="true"></span>
         <span class="prism-glint prism-glint-one" aria-hidden="true">✦</span>
         <span class="prism-glint prism-glint-two" aria-hidden="true">✧</span>
         <div class="art-note note-one">GROW AT<br>YOUR PACE</div>
-        <div class="art-note note-two">EST. 2026</div>
+        <div class="art-note note-two">A LITTLE GARDEN</div>
         <div class="art-caption"><span>TRILYVA / PRISM FLOWERS</span><a href="https://tamasrazim.github.io/projects/trilyva/renderer/" target="_blank" rel="noopener noreferrer">VIEW LIBRARY ↗</a></div>
         <div class="prism-controls">
-          <span class="prism-credit">Artwork by Robiul Rumman Razim · used with permission</span>
-          <button class="prism-pause" id="prismPause" type="button" aria-pressed="false">Pause motion</button>
+          <span class="prism-credit">Original Prism animation code by Robiul Rumman Razim · used with permission</span>
+          <button class="prism-pause" id="prismPause" type="button" aria-pressed="false" aria-label="Pause decorative motion" hidden>Pause motion</button>
         </div>
       </div>
-      <div class="hero-bottom"><span>PERSONAL WEBSITE</span><span>MADE WITH A LITTLE DAYDREAMING</span><span>SCROLL TO EXPLORE ↓</span></div>
+      <div class="hero-bottom reveal"><span>PERSONAL WEBSITE</span><span>MADE WITH A LITTLE DAYDREAMING</span><span>SCROLL TO EXPLORE ↓</span></div>
     </section>
 
     <section class="section wrap story-section" id="story" aria-labelledby="story-title">
       <div class="section-kicker"><span>01</span><span>THE PERSON BEHIND THE PAGE</span></div>
       <div class="story-grid">
-        <div class="story-heading reveal"><p class="eyebrow">A NOTE FROM ME</p><h2 id="story-title">Not a brand.<br><em>Just me.</em></h2><span class="handwritten">and that's enough ♡</span></div>
-        <div class="story-copy reveal">
+        <div class="story-heading reveal reveal-left"><p class="eyebrow">A NOTE FROM ME</p><h2 id="story-title">Not a brand.<br><em>Just me.</em></h2><span class="handwritten">and that's enough ♡</span></div>
+        <div class="story-copy reveal reveal-right">
           <p class="story-lead">I'm Tamanna. Welcome to my little space on the internet.</p>
           <p>I made this page to have somewhere that feels personal — a place to introduce myself, gather the things I choose to share, and let the story unfold naturally.</p>
           <p>There is no rush to fill every corner. Some pages are allowed to grow slowly.</p>
@@ -120,20 +140,74 @@
       </div>
     </section>
 
+    <section class="bloom-interlude" aria-label="A gentle reminder to bloom at your own pace">
+      <div class="wrap bloom-inner">
+        <div class="bloom-copy reveal reveal-left">
+          <p class="eyebrow">A LITTLE REMINDER</p>
+          <h2>There's no hurry<br>to <em>bloom.</em></h2>
+          <p>Good things can unfold one petal at a time.</p>
+        </div>
+        <div class="bloom-scene reveal reveal-bloom" aria-hidden="true">
+          <div class="bloom-orbit bloom-orbit-one"></div>
+          <div class="bloom-orbit bloom-orbit-two"></div>
+          <div class="bloom-flower bloom-flower-large">
+            <span class="bloom-petal"></span><span class="bloom-petal"></span><span class="bloom-petal"></span>
+            <span class="bloom-petal"></span><span class="bloom-petal"></span><span class="bloom-petal"></span>
+            <span class="bloom-core"></span>
+          </div>
+          <span class="bloom-spark bloom-spark-one">✦</span>
+          <span class="bloom-spark bloom-spark-two">✧</span>
+          <span class="bloom-floating-petal bloom-floating-petal-one"></span>
+          <span class="bloom-floating-petal bloom-floating-petal-two"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap prism-library-section" id="prism-collection" aria-labelledby="prism-library-title">
+      <div class="section-kicker"><span>02</span><span>TRILYVA / THE ORIGINAL PRISM COLLECTION</span></div>
+      <div class="world-heading reveal reveal-up prism-library-heading">
+        <h2 id="prism-library-title">Flowers in<br><em>their own motion.</em></h2>
+        <p>These previews are drawn from the original Prism Flowers JavaScript library. Each flower is rendered from its own <code>renderFrame</code> animation — not a still image, recoloured duplicate, or CSS imitation.</p>
+      </div>
+
+      <div class="prism-library-note reveal">
+        <span class="prism-note-flower" aria-hidden="true">✿</span>
+        <p><strong>A little collection, a lot of petals.</strong> The source contains 947 original animations; this garden features 946 and leaves one flower out by preference. It loads only when this section comes into view; the small previews play only while visible.</p>
+        <a href="https://tamasrazim.github.io/projects/trilyva/renderer/" target="_blank" rel="noopener noreferrer">Open TRILYVA ↗</a>
+      </div>
+
+      <div class="prism-library-toolbar reveal">
+        <label class="prism-search-label" for="prismLibrarySearch">FIND A FLOWER OR STUDY</label>
+        <input id="prismLibrarySearch" class="prism-library-search" type="search" placeholder="Try cosmos, lavender, bougainvillea…" autocomplete="off" spellcheck="false">
+        <div class="prism-filter-row" role="group" aria-label="Filter Prism library">
+          <button class="prism-filter active" type="button" data-prism-filter="flowers" aria-pressed="true">Botanical <span>916</span></button>
+          <button class="prism-filter" type="button" data-prism-filter="all" aria-pressed="false">All <span>946</span></button>
+          <button class="prism-filter" type="button" data-prism-filter="seasonal" aria-pressed="false">Seasonal <span>10</span></button>
+          <button class="prism-filter" type="button" data-prism-filter="other" aria-pressed="false">Other studies <span>20</span></button>
+        </div>
+      </div>
+
+      <p class="prism-library-status" id="prismLibraryStatus" role="status" aria-live="polite">The original Prism entries are ready to bloom here. Scroll into this section to load the source library.</p>
+      <button class="button button-dark prism-load-library" id="prismLoadLibrary" type="button" hidden>Load original flower animations</button>
+      <div class="prism-library-grid" id="prismLibraryGrid" aria-live="off"></div>
+      <div class="prism-library-more-wrap"><button class="button prism-load-more" id="prismLoadMore" type="button" hidden>Load more blooms</button></div>
+      <p class="prism-library-credit">Original Prism animation code from <strong>TRILYVA Prism Flowers</strong> by Robiul Rumman Razim · used with permission · <a href="https://github.com/Tamasrazim/tamasrazim.github.io/blob/cf9da54ce6793fe550fadd08cf26f86c517af913/projects/trilyva/renderer/library/prism-library.json" target="_blank" rel="noopener noreferrer">View source JSON ↗</a></p>
+    </section>
+
     <section class="section world-section" id="little-world" aria-labelledby="world-title">
       <div class="wrap">
-        <div class="section-kicker"><span>02</span><span>A FEW LITTLE CORNERS</span></div>
-        <div class="world-heading reveal"><h2 id="world-title">A little world<br><em>still unfolding.</em></h2><p>Think of this as a scrapbook with blank pages left on purpose. These are the spaces I'll fill as there's something I want to share.</p></div>
+        <div class="section-kicker"><span>03</span><span>A FEW LITTLE CORNERS</span></div>
+        <div class="world-heading reveal reveal-up"><h2 id="world-title">A little world<br><em>still unfolding.</em></h2><p>Think of this as a scrapbook with blank pages left on purpose. These are the spaces I'll fill as there's something I want to share.</p></div>
         <div class="world-cards">
-          <article class="world-card card-lilac reveal">
+          <article class="world-card card-lilac reveal reveal-bloom">
             <div class="card-illustration paper-star" aria-hidden="true"><span>✳</span><i>✦</i><b>✧</b></div>
             <div class="card-number">01 / THE JOURNAL</div><h3>Little notes</h3><p>Thoughts, moments, and words worth keeping.</p><span class="card-status">A PAGE TO COME</span>
           </article>
-          <article class="world-card card-peach reveal">
+          <article class="world-card card-peach reveal reveal-bloom">
             <div class="card-illustration paper-flower" aria-hidden="true"><span>✿</span><i>✳</i><b>·</b></div>
             <div class="card-number">02 / THE GALLERY</div><h3>Things I make</h3><p>A home for creative experiments and projects, whenever they arrive.</p><span class="card-status">A PAGE TO COME</span>
           </article>
-          <article class="world-card card-sage reveal">
+          <article class="world-card card-sage reveal reveal-bloom">
             <div class="card-illustration paper-orbit" aria-hidden="true"><span>♡</span><i>✧</i><b>✦</b></div>
             <div class="card-number">03 / THE COLLECTION</div><h3>Things I love</h3><p>A growing collection of the little things I decide to share.</p><span class="card-status">A PAGE TO COME</span>
           </article>
@@ -142,10 +216,10 @@
     </section>
 
     <section class="section wrap online-section" id="find-me" aria-labelledby="online-title">
-      <div class="section-kicker"><span>03</span><span>AROUND THE INTERNET</span></div>
+      <div class="section-kicker"><span>04</span><span>AROUND THE INTERNET</span></div>
       <div class="online-grid">
-        <div class="online-heading reveal"><p class="eyebrow">SOMEWHERE ELSE</p><h2 id="online-title">Find me<br><em>out there.</em></h2><p>For now, GitHub is the one link I'm putting here. More can join when I'm ready.</p></div>
-        <a class="github-card reveal" href="https://github.com/tasnimaktertamanna" target="_blank" rel="noopener noreferrer">
+        <div class="online-heading reveal reveal-left"><p class="eyebrow">SOMEWHERE ELSE</p><h2 id="online-title">Find me<br><em>out there.</em></h2><p>For now, GitHub is the one link I'm putting here. More can join when I'm ready.</p></div>
+        <a class="github-card reveal reveal-right" href="https://github.com/tasnimaktertamanna" target="_blank" rel="noopener noreferrer">
           <span class="github-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.8 1.4a13 13 0 0 0-6.9 0C5.5 1.1 4.3 1.5 4.3 1.5a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.7V22"/></svg></span>
           <span class="github-copy"><small>MY GITHUB PROFILE</small><strong>GitHub</strong><span>@tasnimaktertamanna</span><small class="online-handle-label">MY ONLINE NAME</small><span>@red_heart_07</span></span>
           <span class="github-arrow" aria-hidden="true">↗</span>
@@ -154,11 +228,11 @@
     </section>
 
     <section class="closing-section wrap" aria-labelledby="closing-title">
-      <div class="closing-art" aria-hidden="true">✿</div>
-      <p class="eyebrow">BEFORE YOU GO</p>
-      <h2 id="closing-title">Thanks for<br><em>stopping by.</em></h2>
-      <p class="closing-note">May you find a little beauty in the ordinary today.</p>
-      <a class="back-top" href="#home">Back to the beginning ↑</a>
+      <div class="closing-art reveal reveal-bloom" aria-hidden="true">✿</div>
+      <p class="eyebrow reveal">BEFORE YOU GO</p>
+      <h2 id="closing-title" class="reveal reveal-up">Thanks for<br><em>stopping by.</em></h2>
+      <p class="closing-note reveal">May you find a little beauty in the ordinary today.</p>
+      <a class="back-top reveal" href="#home">Back to the beginning ↑</a>
     </section>
   </main>
 

@@ -292,7 +292,7 @@ Copy direction:
 
 Artwork direction:
 
-- A translucent flower, ideally the approved Prism Aster asset in the current implementation.
+- A small cluster of original Prism flower animations from the TRILYVA library. Lead with Cosmos, with Carnation and Snapdragon as supporting blooms. Do not use Prism Aster; Tamanna does not like that flower.
 - A soft halo behind the flower.
 - A small number of orbit rings.
 - A few drifting petals and glints.
@@ -491,31 +491,27 @@ Avoid harsh geometric stars mixed with photorealistic flowers, random emoji as t
 
 ### 8.3 Original Prism artwork and provenance
 
-The current hero uses a vector asset named `prism-aster.svg`, derived from an EPS source supplied in the project conversation. Its shape and paths are treated as original artwork from the TRILYVA Prism Flowers work. The site currently credits it with the wording:
+The current hero uses three original Prism Flowers JavaScript entries from the pinned TRILYVA source: Cosmos, Carnation and Snapdragon. Each runs its own `renderFrame` function in an isolated canvas iframe. Do not use the Prism Aster artwork or entry; Tamanna explicitly said she does not like that flower. The hero credit wording is:
 
-> Artwork by Robiul Rumman Razim · used with permission
+> Original Prism animation code by Robiul Rumman Razim · used with permission
 
 That credit reflects Tamanna's report that permission was given. Do not remove the credit or broaden the permission claim beyond what the owner has confirmed. If a future asset has different terms, record its provenance and license separately.
 
 ### 8.4 Important distinction: original library vs. decorative echo
 
-The current site does **not** include the complete TRILYVA Prism Flowers animation library. The two tinted echo images are visual echoes of the same Aster SVG, and the flower's floating/rotation/orbit effects are website-native CSS animation. They are not separate original TRILYVA animation entries. Never describe them as a full collection or as the full TRILYVA renderer.
+**Implementation update — 15 November 2026.** The source file is available directly from Razim's repository at `projects/trilyva/renderer/library/prism-library.json`. It contains **947 entries**, each with an original JavaScript `renderFrame` function. The inspected source reports 917 botanical entries, 10 seasonal/decorative entries, and 20 additional studies whose descriptions do not identify a category. The site excludes Prism Aster, so it presents 946 entries: 916 botanical, 10 seasonal/decorative, and 20 additional studies.
 
-To add other original Prism entries:
+The site now has a real Prism collection section. It retrieves the JSON when the hero enters or approaches the viewport, pins the request to source commit `cf9da54ce6793fe550fadd08cf26f86c517af913`, initially presents eight curated botanical entries, and lets visitors search/filter/paginate through 946 entries. The Prism Aster entry is intentionally excluded. The hero uses these same selected source entries, so the request normally begins during the first page view when the hero is visible. Animation previews are rendered from the original code in sandboxed `allow-scripts` iframes; original code is not executed in the main page context. The site uses the same render inputs observed in Razim's Code-to-EPS flower runner: `time`, `frame`, `fps`, `ctx`, `width`, `height`, `motion`, and `TAU`, with a ten-second normalized loop.
 
-1. Obtain the actual library source or official library ZIP.
-2. Inspect each entry's metadata and rendering contract.
-3. Confirm permission and applicable terms for the specific entries and distribution context.
-4. Preserve attribution where required.
-5. Integrate a small, curated subset first; do not blindly load a multi-megabyte data file on every visit.
-6. Keep original render code, export source, and website wrappers clearly separated.
-7. Test the exact rendering output, loop seam, timing, and mobile performance.
+All 947 entries were syntax-compiled and invoked once against a Canvas-like test context during integration checks, with no exceptions. This is a code-level check, not a substitute for final visual browser testing on real devices. The page does not load the complete TRILYVA editor or its video-export pipeline; it hosts the Prism `renderFrame` entries in its own lightweight preview cards.
 
-A page can be beautiful with original CSS blooms while the full animation library remains unavailable. Do not fake provenance to make the design appear more complete.
+The three hero blooms are not CSS imitations: they execute the original Cosmos, Carnation and Snapdragon JavaScript from the library. Their surrounding orbit, float and reveal choreography is website-native CSS. Gallery previews also execute each selected entry’s original source code. Keep this distinction explicit in future descriptions.
+
+Preserve the visible credit: **Original Prism animation code from TRILYVA Prism Flowers by Robiul Rumman Razim · used with permission**, with a link to the exact source JSON. This permission statement reflects Tamanna's report that permission was given; do not broaden it to unrelated TRILYVA source, templates, renderer code, or assets.
 
 ### 8.5 Decoration density
 
-Use a focal flower per major scene, not a flower in every corner. The header may have a tiny four-petal mark; the hero may have the Aster; the interlude may have a CSS bloom; cards may use miniature symbols. This creates a family resemblance without repetition becoming monotonous.
+Use a focal botanical composition per major scene, not a flower in every corner. The header may have a tiny four-petal mark; the hero uses the Cosmos/Carnation/Snapdragon trio; the interlude may use a restrained CSS bloom; cards may use miniature symbols. Never reintroduce Prism Aster.
 
 ---
 
@@ -768,8 +764,6 @@ The established site bundle has used these root-level files:
 | `index.html` | Semantic page structure and metadata |
 | `styles.css` | Tokens, layout, components, responsive rules, and motion styles |
 | `main.js` | Theme toggle, menu, scroll progress, reveal behavior, pause control, and small interactions |
-| `prism-aster.svg` | Main approved Prism Aster vector artwork |
-| `flower-art.svg` | Supporting/custom botanical vector artwork when present in the bundle |
 | `og-image.png` | Social-sharing preview |
 | `favicon.svg` | Browser tab icon |
 | `robots.txt` | Crawler guidance |
@@ -858,7 +852,7 @@ A change is not done merely because it looks nice in one screenshot. It is done 
 - No invented biography, credential, location, hobby, or achievement.
 - No unverified contact or social URL.
 - No false statement that the website is live or updated before checking the deployed URL.
-- No claim that the complete TRILYVA library is included when only an Aster export is present.
+- Do not claim the complete TRILYVA renderer is included. The site loads the 947-entry Prism JSON and intentionally omits Aster, exposing 946 source entries.
 - Credits and permission wording remain accurate.
 
 ---
@@ -878,7 +872,7 @@ A change is not done merely because it looks nice in one screenshot. It is done 
 11. Do not invent personal facts to fill empty space.
 12. Do not add generic “skills,” “services,” “testimonials,” or “clients” sections without real material.
 13. Do not copy Razim's site identity or distinctive proprietary artwork as a shortcut.
-14. Do not describe recoloured duplicate Aster artwork as separate flowers from TRILYVA.
+14. Do not reintroduce Prism Aster; it is explicitly disliked by Tamanna. Do not describe CSS-created shapes as original TRILYVA entries.
 15. Do not load a huge JSON animation library into the homepage just to show off a technical connection.
 16. Do not add tracking or analytics without a clear, owner-approved purpose.
 17. Do not remove credits because they interrupt the composition; redesign the credit placement instead.
@@ -904,34 +898,31 @@ These are ideas, not commitments or facts. Do not build the page as if these sec
 
 ---
 
-## 20. THE PRISM GARDEN — ASSET INTEGRATION SPECIFICATION
+## 20. THE PRISM GARDEN — ORIGINAL ANIMATION SPECIFICATION
 
-The Prism Aster is a special focal artwork. Treat it with care.
+The hero is a living three-flower composition made from actual TRILYVA Prism source entries. Use Cosmos as the main bloom, with Carnation and Snapdragon as the smaller supporting blooms. These three `renderFrame` functions run inside isolated canvas iframes. Do not use the Prism Aster artwork or library entry anywhere in the site: Tamanna explicitly dislikes it.
 
 ### 20.1 Composition
 
-- The Aster sits near the center of the hero illustration area.
-- A low-contrast organic halo sits behind it.
-- Thin orbit rings frame the flower without crossing the headline.
-- Optional tinted echoes may sit at the edges to create depth; they must remain secondary.
-- Detached petals are sparse and positioned with enough margin to avoid touching text or controls.
-- Glints are tiny accents, not an animated star field.
+- Cosmos is the visual anchor, centered and slightly larger than the supporting flowers.
+- Carnation sits low on the left; Snapdragon sits high on the right.
+- Use quiet orbit rings, a soft lilac/rose halo, sparse glints and occasional drifting petals to support the source animations without competing with them.
+- Keep names small and editorial; the flowers, not the labels, should be the focal point.
+- Preserve enough whitespace for the hero heading and the pause control.
 
-### 20.2 Motion layering
+### 20.2 Original-source execution
 
-Keep the motion transforms on separate wrappers where possible. For example, the bloom entrance wrapper can handle scale and opacity while the inner image handles float or rotation. This avoids competing animation declarations overwriting each other.
+- Fetch the pinned Prism JSON only when the hero enters or approaches the viewport.
+- Exclude `prism-aster` from every gallery result, including the All filter and search.
+- The source contains 947 entries; the site intentionally exposes 946: 916 botanical, 10 seasonal/decorative, and 20 other studies.
+- Pass each selected `code` entry to an isolated iframe and execute its original `renderFrame` function with the renderer's `motion` object and `TAU` closure.
+- Do not evaluate source-library animation code in the top-level website document.
+- Only animate previews while visible and while the page is visible. The global pause button pauses all continuous motion.
+- For `prefers-reduced-motion`, render a static frame and stop the animation loop.
 
-### 20.3 Controls and credits
+### 20.3 Credits and permissions
 
-The credit must remain readable at desktop and mobile sizes. The pause button must be reachable and must not overlap the art. On a small viewport, allow the credit to wrap rather than making it microscopic.
-
-### 20.4 Loading and fallback
-
-The flower must not cause layout shift. Reserve the artwork's space with a fixed aspect ratio or known dimensions. If the SVG fails to load, show a soft CSS botanical fallback or a meaningful static placeholder rather than a broken-image icon.
-
-### 20.5 Future Prism entries
-
-If additional library assets are authorized, display them as a curated set. Each item should have its true name or verified label, a clear preview, and correct attribution. Do not label a procedural CSS bloom as a named TRILYVA source animation unless it actually is that entry.
+Preserve the visible credit: **Original Prism animation code from TRILYVA Prism Flowers by Robiul Rumman Razim · used with permission**, with a link to the exact source JSON. This reflects Tamanna's report that permission was given. Do not broaden the permission claim to unrelated TRILYVA source, templates, renderer code, or assets.
 
 ---
 
@@ -1049,7 +1040,7 @@ If the page only works while everything moves, the design is incomplete. If it w
 - **Motion:** scroll reveals, blooming petals, slow flower float, restrained orbit, tiny glints, thin progress line.
 - **Accessibility:** keyboard support, visible focus, semantic HTML, reduced-motion behavior, readable contrast.
 - **Truth:** do not invent biography or links; label placeholders honestly.
-- **Prism:** current Aster export plus CSS effects is not the complete TRILYVA animation library; keep credits and provenance accurate.
+- **Prism:** the hero uses three actual TRILYVA source animations (Cosmos, Carnation and Snapdragon); the gallery exposes 946 of 947 entries, intentionally excluding Aster. Keep credits and provenance accurate.
 - **Implementation:** lightweight HTML/CSS/JS; validate before packaging.
 - **Publication:** never claim live until verified.
 
